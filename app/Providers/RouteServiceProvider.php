@@ -7,6 +7,15 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MeowsController;
+
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
+
+Route::get('/home', [MeowsController::class, 'home']);
+Route::get('/meows', [MeowsController::class, 'meows']);
+Route::get('/meow/{id}', [MeowsController::class, 'meow']);
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -22,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
+
     public function boot(): void
     {
         RateLimiter::for('api', function (Request $request) {
