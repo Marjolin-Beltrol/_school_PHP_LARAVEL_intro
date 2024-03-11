@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeowsController;
 
-Route::get('/greeting', function () {
-    return 'Hello World';
-});
-
-Route::get('/home', [MeowsController::class, 'home']);
-Route::get('/meows', [MeowsController::class, 'meows']);
-Route::get('/meow/{id}', [MeowsController::class, 'meow']);
 
 class RouteServiceProvider extends ServiceProvider
 {
