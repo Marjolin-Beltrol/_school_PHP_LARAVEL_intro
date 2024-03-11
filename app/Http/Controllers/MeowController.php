@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 
 class MeowController extends Controller
 {
-    function meow($id): string
+    function meow(int $id): string
     {
-        return 'miaou' . $id;
+        return view('meow-details', ['id' => $id]);
     }
 }

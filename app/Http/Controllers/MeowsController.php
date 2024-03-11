@@ -8,7 +8,7 @@ class MeowsController extends Controller
 
     function meows(): string
     {
-        return 'miaou';
+        return view('meows-list');
     }
 
 }
