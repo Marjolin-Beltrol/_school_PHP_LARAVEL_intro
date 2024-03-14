@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MeowController;
-use App\Http\Controllers\MeowsController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
+
 
 Route::get('/', [HomeController::class, 'home']);
-Route::get('/meows', [MeowsController::class, 'meows']);
-Route::get('/meow/{id}', [MeowController::class, 'meow']);
+Route::get('/messages', [MessagesController::class, 'messages']);
+Route::get('/message/{id}', [MessageController::class, 'message']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
