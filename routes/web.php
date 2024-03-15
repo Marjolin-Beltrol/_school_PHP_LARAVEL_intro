@@ -29,8 +29,7 @@ Route::get('/message/{id}', [MessageController::class, 'show'])->name('message.s
 Route::get('/message/{id}/edit', [MessageController::class, 'edit'])->name('message.edit');
 Route::patch('/message/{id}', [MessageController::class, 'update'])->name('message.update');
 Route::delete('/message/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
-
-
+Route::get('/user/{uuid}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
