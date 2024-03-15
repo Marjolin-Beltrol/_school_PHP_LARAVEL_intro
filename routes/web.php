@@ -23,8 +23,14 @@ Route::get('/', function () {
 
 
 Route::get('/', [HomeController::class, 'home']);
-Route::get('/messages', [MessagesController::class, 'messages']);
-Route::get('/message/{id}', [MessageController::class, 'message']);
+Route::get('/messages', [MessagesController::class, 'messages'])->name('messages');
+//Route::get('/message/{id}', [MessageController::class, 'message']);
+Route::get('/message/{id}', [MessageController::class, 'show'])->name('message.show');
+Route::get('/message/{id}/edit', [MessageController::class, 'edit'])->name('message.edit');
+Route::patch('/message/{id}', [MessageController::class, 'update'])->name('message.update');
+Route::delete('/message/{id}', [MessageController::class, 'destroy'])->name('message.destroy');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

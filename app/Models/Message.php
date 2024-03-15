@@ -14,7 +14,6 @@ class Message extends Model
 
     protected $fillable = ['text', 'user_id'];
 
-    // Si la clé primaire est un UUID
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
